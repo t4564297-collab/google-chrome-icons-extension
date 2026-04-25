@@ -1,0 +1,16 @@
+/* 
+  This stylesheet is injected into Google pages by the extension.
+  It ensures that the replaced SVG icons have a consistent appearance.
+*/
+
+[data-icon-replaced="true"] svg {
+  /* Use 'em' to scale the icon relative to the parent's font size */
+  width: 1em;
+  height: 1em;
+  
+  /* Ensures the icon aligns nicely with surrounding text */
+  vertical-align: middle;
+
+  /* The fill color will be inherited from the parent element's 'color' property */
+  fill: currentColor;
+}

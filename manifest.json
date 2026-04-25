@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "مُصلح أيقونات جوجل",
+  "version": "2.1",
+  "description": "يستبدل أسماء أيقونات Material Icons النصية بأيقونات SVG، مع إمكانية تفعيل/تعطيل لكل موقع.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://*.google.com/*",
+    "https://*.google.com.eg/*",
+    "https://*.google.com.sa/*",
+    "https://*.youtube.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://*.google.com/*",
+        "https://*.google.com.eg/*",
+        "https://*.google.com.sa/*",
+        "https://*.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}

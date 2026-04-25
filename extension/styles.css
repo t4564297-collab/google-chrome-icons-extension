@@ -1,0 +1,47 @@
+
+/**
+ * This stylesheet implements the "CSS Hiding" strategy.
+ * Version: 2.6
+ */
+
+/*
+ * Target the parent icon element AFTER our script has fixed it.
+ * The `!important` is crucial to override inline styles or high-specificity
+ * rules from the host page's framework (like Gemini's).
+ */
+[data-icon-fixed="true"] {
+  /* This is the magic: it makes the original text node invisible by giving it no size. */
+  font-size: 0 !important;
+  /* Ensures the element still behaves like an inline-block for layout purposes. */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * Now, target the wrapper we added.
+ * It acts as a container for our SVG.
+ */
+.g-icon-fixer-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*
+ * Finally, style the SVG itself inside our wrapper.
+ */
+.g-icon-fixer-wrapper svg {
+  /* Restore the font size for the SVG so it becomes visible.
+     Using 'em' makes it scale relative to the *original* intended font size
+     of the parent before we set it to 0. */
+  font-size: 24px; /* A sensible default, can be overridden by parent context */
+  width: 1em;
+  height: 1em;
+  
+  /* Ensures the icon aligns nicely with any potential surrounding content. */
+  vertical-align: middle;
+
+  /* The fill color will be inherited from the parent element's 'color' property. */
+  fill: currentColor;
+}
